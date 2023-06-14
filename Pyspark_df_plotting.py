@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from pyspark.sql.functions import *
-from pyspark import SparkSession
+from pyspark.sql import SparkSession
 
 # Create Spark Context
 spark = SparkSession.builder.appName("testApp").master("local").getOrCreate()
