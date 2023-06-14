@@ -16,7 +16,7 @@ spark = SparkSession.builder.master("local").appName("Pyspark_app").enableHiveSu
 script_path = os.path.realpath(__file__)
 config_path = os.path.join(os.path.dirname(script_path), "/config/app_config.cfg")
 config = configparser.ConfigParser()
-config.red(config_path)
+config.read(config_path)
 app_name = config.get("DEFAULT","app_name")
 
 # Define the input data
