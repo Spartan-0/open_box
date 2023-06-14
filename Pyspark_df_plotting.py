@@ -1,6 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from pyspark.sql.functions import *
+from pyspark import SparkSession
+
+# Create Spark Context
+spark = SparkSession.builder.appName("testApp").master("local").getOrCreate()
 
 # Create a PySpark DataFrame
 df = spark.createDataFrame([(1, 2), (3, 4), (5, 6)], ["col1", "col2"])
