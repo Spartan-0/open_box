@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pyspark.sql.functions import *
 from pyspark.sql import SparkSession
+import os
 
 # Create Spark Context
 spark = SparkSession.builder.appName("testApp").master("local").getOrCreate()
@@ -14,8 +15,8 @@ pandas_df = df.toPandas()
 
 # Generate a bar chart
 pandas_df.plot(kind="bar", x="col1", y="col2")
-plt.savefig('/home/mohan/Pictures/bar_chart.jpg')
+plt.savefig('./bar_chart.jpg')
 
 # Generate a scatter plot
 pandas_df.plot(kind="scatter", x="col1", y="col2")
-plt.savefig('/home/mohan/Pictures/scatter_chart.jpg')
+plt.savefig('./scatter_chart.jpg')
