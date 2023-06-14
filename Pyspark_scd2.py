@@ -1,5 +1,23 @@
 from pyspark.sql.functions import *
 from pyspark.sql.window import Window
+from pyspark.sql import SparkSession
+import os
+import configparser
+import argparse
+from pyspark.storagelevel import StorageLevel
+
+parser = argparse.ArgumentParser(description="pyspark arguments")
+parser.add_argument('--input',help="getting inputfile path")
+args = parser.parse_args()
+input_path = args.input
+
+# Define Spark Session
+spark = SparkSession.builder.master("local").appName("Pyspark_app").enableHiveSupport().getOrCreate()
+script_path = os.path.realpath(__file__)
+config_path = os.path.join(os.path.dirname(script_path), "/config/app_config.cfg")
+config = configparser.ConfigParser()
+config.red(config_path)
+app_name = config.get("DEFAULT","app_name")
 
 # Define the input data
 data = [
@@ -8,7 +26,10 @@ data = [
   (2, 'Jane', 'Doe', '2021-01-01'),
   (2, 'Jane', 'Doe', '2022-01-01')
 ]
+
 df = spark.createDataFrame(data, ['id', 'first_name', 'last_name', 'effective_date'])
+df.persist(StorageLevel.MEMORY_AND_DISK)
+df.count()
 
 # Create a window partitioned by id and ordered by effective_date
 window = Window.partitionBy('id').orderBy('effective_date')
@@ -34,5 +55,8 @@ df = df.withColumn('start_date', coalesce('start_date', lit('1900-01-01')))
 # Drop the effective date column
 df = df.drop('effective_date')
 
+df.show(5,truncate=False)
+df.unpersist
+df.count()
 # Write the dataframe to a table
-df.write.format('delta').mode('overwrite').saveAsTable('slowly_changing_dim')
+#df.write.format('delta').mode('overwrite').saveAsTable('slowly_changing_dim')
