@@ -14,8 +14,8 @@ pandas_df = df.toPandas()
 
 # Generate a bar chart
 pandas_df.plot(kind="bar", x="col1", y="col2")
-plt.show()
+plt.savefig('/home/mohan/Pictures/bar_chart.jpg')
 
 # Generate a scatter plot
 pandas_df.plot(kind="scatter", x="col1", y="col2")
-plt.show()
+plt.savefig('/home/mohan/Pictures/scatter_chart.jpg')
