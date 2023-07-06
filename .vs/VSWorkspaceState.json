@@ -1,8 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\config"
+    ""
   ],
-  "SelectedNode": "\\Pyspark_scd2.py",
+  "SelectedNode": "\\azure-pipelines.yml",
   "PreviewInSolutionExplorer": false
 }
