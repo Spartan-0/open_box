@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\HackerRank"
   ],
-  "SelectedNode": "\\azure-pipelines.yml",
+  "SelectedNode": "\\HackerRank\\finding_leap_year.py",
   "PreviewInSolutionExplorer": false
 }
