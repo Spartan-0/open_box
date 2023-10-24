@@ -42,13 +42,13 @@ openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")
 openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")  
 credential = AzureKeyCredential("")
 os.environ["OPENAI_API_TYPE"] = "azure"
-os.environ["OPENAI_API_BASE"] = "https://testingchat.openai.azure.com/"
+os.environ["OPENAI_API_BASE"] = ""
 os.environ["OPENAI_API_KEY"] = ""
 os.environ["OPENAI_API_VERSION"] = "2023-05-15"
 model: str = "text-embedding-ada-002"
-#pdf_file_name = "Alaska Airlines and Horizon Air SMS Manual.pdf"     
+#pdf_file_name = "SMS Manual.pdf"     
 
-AZURE_SEARCH_SERVICE_ENDPOINT = "https://genaisafety.search.windows.net"
+AZURE_SEARCH_SERVICE_ENDPOINT = ""
 AZURE_SEARCH_ADMIN_KEY = ""
 def pdf_text_extraction(pdf_file_path):
     if pdf_file_path is not None:
